@@ -5,10 +5,29 @@ public class Main {
         System.out.println("Hello world!");
 
 //        Mythread mythread = new Mythread();
-        Singleton obj = Singleton.getInstance();
+//        Singleton obj = Singleton.getInstance();
 //        Singleton obj1 = Singleton.getInstance();
 //        System.out.println(obj);
 
+        Mysingleton obj1 = Mysingleton.getInstance();
+        Mysingleton obj2 = Mysingleton.getInstance();
+
+    }
+
+    public static class Mysingleton{
+
+        private static Mysingleton instance = new Mysingleton() ;
+
+        private Mysingleton(){
+            System.out.println("Mysingleton is called");
+        }
+
+        public static synchronized Mysingleton getInstance(){
+            if(instance == null){
+                instance = new Mysingleton();
+            }
+            return instance;
+        }
     }
 
     public static class Mythread{
